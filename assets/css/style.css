@@ -237,6 +237,12 @@ details.data th:first-child, details.data td:first-child { text-align: left; }
 .entry h4 { font-size: var(--step-1); }
 .entry .meta { font-size: var(--step--1); color: var(--ink-3); }
 .entry p { color: var(--ink-2); max-width: var(--measure); }
+.entry .flight { margin: 6px 0 0; display: grid; gap: 10px; min-width: 0; }
+.entry .flight-clip { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 6px; border: 1px solid var(--rule); background: #0b0d1a; }
+.entry .flight-clip iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.entry .flight figcaption { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; margin-top: 0; }
+.entry .flight figcaption a { font-weight: 600; }
+.entry .flight .num { font-weight: 600; color: var(--ink-3); }
 .entry .photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
 .entry .photos figure { margin: 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
 .entry .photos .frame { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; border: 1px solid var(--rule); background: var(--plate); box-shadow: 0 1px 2px rgba(24, 27, 54, .06), 0 16px 30px -20px rgba(24, 27, 54, .5); }
