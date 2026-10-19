@@ -23,7 +23,7 @@ The C_p distributions at η = 0.2 and η = 0.9 match the NASA grids. The λ-shoc
 
 ## Limits
 - First cell at y⁺ ≈ 100, so the model uses wall functions where the references resolve the boundary layer.
-- Trailing edge and wake are not refined enough. Together with the wall functions, this explains the drag gap.
+- Trailing edge and wake are not refined enough due to the student license limit (1 Million cells). Together with the wall functions, this explains the drag gap.
 
 ---
 

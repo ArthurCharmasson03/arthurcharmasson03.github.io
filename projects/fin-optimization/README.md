@@ -25,8 +25,6 @@ Inputs: 83 mm body, 116 cm length, 403 m/s, 17.4 g, four 4 mm aluminium fins, mi
 Result after 15 SQP iterations: span 178 mm, root chord 55.3 mm, tip chord 20 mm, sweep 17.6 mm, 67 cm² per fin, 289.5 g in total.
 Static margin is 3.03 calibres with a full motor and 3.63 when empty. C_n = 15.0, so the minimum-lift constraint is active.
 
-## Portfolio fixes
-Four bugs were fixed: maximum-margin constraint sign, safety-factor units in the display, tip-deflection index and export field. Details are in [`../../CORRECTIFS.md`](../../CORRECTIFS.md).
 
 ## Known limits / next steps
 - One point to check: the fin centre of pressure uses `TAILLE_FUSEX - m` while the fin centre of gravity uses `position_bas`. They should refer to the same fin position.

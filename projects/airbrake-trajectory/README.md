@@ -19,9 +19,6 @@ Without airbrakes the apogee reaches about 3,850 m; with airbrakes it drops to a
 `Drag.csv` and `Mach.csv` (the team's drag-versus-Mach tables) must be in the same folder; they are not included here. Run the script to get the trajectory plot and the apogee and range table.
 Post-burnout initial conditions (`H_sortie`, `V_sortie`, …) come from the team's StabTraj sheet. Update them if the design changes.
 
-## Portfolio fix
-`F_a_mach0`, the "airbrakes retracted" table, was built without a transpose. The trajectory became `NaN` as soon as the deployment altitude `H` differed from `H_sortie`. See [`../../CORRECTIFS.md`](../../CORRECTIFS.md).
-
 ## Known limits
 - The airbrake force is tabulated in newtons versus Mach at fixed density, so braking is overestimated at altitude.
 - No launch rail: γ starts changing as soon as V > 1 m/s.

@@ -29,8 +29,6 @@ At N = 500, the vortex centre (0.4700, 0.5660) sits within 0.001 of the referenc
 Open either script in MATLAB and run it. Parameters are at the top: `Re`, `H`, wall velocities `Un, Us, Ve, Vw`, grid size `Ng`.
 `cfdlid2.m` assumes a square cavity (`H = 1`), because the spectral Poisson solver uses kπ wavenumbers in both directions.
 
-## Portfolio fix
-`cfdlid2.m` called `dstn` / `idstn`, which are not part of base MATLAB. A matching DST-I pair was added as local functions at the end of the file. It was checked on an analytic Poisson problem (error ≈ 1e-15). See [`../../CORRECTIFS.md`](../../CORRECTIFS.md).
 
 ---
 
