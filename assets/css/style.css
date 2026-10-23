@@ -291,3 +291,17 @@ footer { border-top: 1px solid var(--rule); padding-block: 32px 48px; display: f
 .chart .zone { fill: var(--wash); stroke: var(--accent); stroke-width: 1; stroke-opacity: 0.45; }
 .chart .d-empty { fill: var(--panel); stroke: var(--accent); stroke-width: 2.5; }
 .chart .para { stroke-dasharray: 5 4; stroke-width: 1.5; }
+/* airbrake deployment slider */
+.af-control { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; margin-top: 14px; font-size: var(--step--1); color: var(--ink-2); }
+.af-control input[type="range"] { width: 100%; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.af-control output { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 7ch; text-align: right; }
+.af-readout { margin-top: 6px; font-size: var(--step--1); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.chart .af-path { stroke-width: 2.5; }
+.chart .halo { paint-order: stroke; stroke: var(--panel); stroke-width: 4px; stroke-linejoin: round; }
+.chart .af-hit { fill: transparent; cursor: pointer; }
+.chart.mini { margin-top: 10px; }
+@media (max-width: 560px) {
+  #af-panel .chart .lbl, #af-panel .chart .lbl-2 { font-size: 16px; }
+  .af-control { grid-template-columns: minmax(0, 1fr) auto; }
+  .af-control label { grid-column: 1 / -1; }
+}

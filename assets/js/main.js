@@ -159,4 +159,59 @@
       });
     });
   }
+
+  // Airbrake slider: shows the precomputed MATLAB trajectory for the chosen deployment altitude
+  var afEl = document.getElementById("af-data");
+  var af = null;
+  try { af = afEl ? JSON.parse(afEl.textContent) : null; } catch (e) { af = null; }
+  var afRange = document.getElementById("af-range");
+  if (af && afRange) {
+    var afPath = document.getElementById("af-path");
+    var afDep = document.getElementById("af-dep");
+    var afApo = document.getElementById("af-apo");
+    var afApoLbl = document.getElementById("af-apo-lbl");
+    var afMini = document.getElementById("af-mini-dot");
+    var afOut = { fr: document.getElementById("af-out-fr"), en: document.getElementById("af-out-en") };
+    var afTxt = { fr: document.getElementById("af-txt-fr"), en: document.getElementById("af-txt-en") };
+    var metres = function (v, lang) {
+      v = Math.round(v);
+      return lang === "en" ? v.toLocaleString("en-US") : String(v);
+    };
+    var afStatus = function (c, lang) {
+      var over = c.apo - af.ceiling;
+      if (lang === "fr") {
+        return "Apogée " + metres(c.apo, "fr") + " m · " + (over <= 0
+          ? "✓ sous le plafond, marge " + metres(-over, "fr") + " m"
+          : "✕ au-dessus du plafond de " + metres(over, "fr") + " m");
+      }
+      return "Apogee " + metres(c.apo, "en") + " m · " + (over <= 0
+        ? "✓ under the ceiling, " + metres(-over, "en") + " m margin"
+        : "✕ " + metres(over, "en") + " m above the ceiling");
+    };
+    var setAf = function (i) {
+      var c = af.cases[i];
+      if (!c) return;
+      afPath.setAttribute("points", c.pts);
+      afDep.setAttribute("cx", c.dep[0]); afDep.setAttribute("cy", c.dep[1]);
+      afApo.setAttribute("cx", c.top[0]); afApo.setAttribute("cy", c.top[1]);
+      afApoLbl.setAttribute("x", c.lbl[0]); afApoLbl.setAttribute("y", c.lbl[1]);
+      afApoLbl.setAttribute("text-anchor", c.lbl[2]);
+      afApoLbl.textContent = metres(c.apo, "fr") + " m";
+      afMini.setAttribute("cx", c.mini[0]); afMini.setAttribute("cy", c.mini[1]);
+      ["fr", "en"].forEach(function (l) {
+        afOut[l].textContent = metres(c.H, l) + " m";
+        afTxt[l].textContent = afStatus(c, l);
+      });
+      afRange.setAttribute("aria-valuetext", metres(c.H, root.getAttribute("lang") || "fr") + " m");
+    };
+    afRange.addEventListener("input", function () { setAf(+afRange.value); });
+    document.querySelectorAll("[data-af-i]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        afRange.value = el.getAttribute("data-af-i");
+        setAf(+afRange.value);
+      });
+    });
+    if (toggle) toggle.addEventListener("click", function () { setAf(+afRange.value); });
+    setAf(+afRange.value);
+  }
 })();

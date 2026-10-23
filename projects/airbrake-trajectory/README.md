@@ -13,7 +13,12 @@ C'Space caps apogee at 3,000 m, so CHIRON carries airbrakes. This script predict
 - `ode45` events: deployment altitude, apogee (`vy = 0`), touchdown.
 
 ## Result
-Without airbrakes the apogee reaches about 3,850 m; with airbrakes it drops to about 2,700 m, under the 3,000 m ceiling. Values are read from the MATLAB figure; the portfolio chart is redrawn from it by digitisation, rounded to 50 m.
+Without airbrakes the apogee reaches 3,851 m. With airbrakes deployed at burnout (1,109 m), it drops to 2,706 m, 294 m under the 3,000 m ceiling.
+
+## Deployment sweep (portfolio slider)
+[`balayage_aerofreins.m`](balayage_aerofreins.m) runs the main script, then recomputes the airbrake phase for 28 deployment altitudes: burnout, then 1,200 to 3,800 m every 100 m. The apogee stays under 3,000 m only if the airbrakes are deployed below about 1,700 m.
+In the sweep, the 0.5 s deployment ramp starts at the deployment time. In the main script it starts at t = 0, so it only applies when deploying at burnout.
+The sweep was run with a local version of the main script that uses a burnout altitude of 1,109 m; the file published here uses 1,100 m.
 
 ## How to run
 `Drag.csv` and `Mach.csv` (the team's drag-versus-Mach tables) must be in the same folder; they are not included here. Run the script to get the trajectory plot and the apogee and range table.
